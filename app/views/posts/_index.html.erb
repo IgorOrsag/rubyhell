@@ -1,0 +1,51 @@
+<h1>Listing posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filter by tag</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <% @tags.each do |tag| %>
+        <td><a class="filter-by-tag" href="/posts/filter/<%=tag.name%>"><%= tag.name %></a></td>
+      <% end %>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Tagy</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr id ="post-row-<%=post.id%>">
+        <td class="post-author"><%= post.author %></td>
+        <td class="post-title"><%= post.title %></td>
+        <td class="post-body"><%= post.body %></td>
+        <td class="post-tags">
+          <%tags = post.tags.map {|t| t.name} %>
+          <%= tags.join(',') %>
+        </td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
