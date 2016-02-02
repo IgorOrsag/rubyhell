@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @tags = Tag.joins(:posts).group('post_tags.tag_id').order('COUNT(*) DESC')
+    @tags = sorted_tags
     @posts = Post.all.order('updated_at DESC')
     @posts.each(&:tags)
   end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   # GET /posts/filter/tag
   def filter
-    @tags = Tag.joins(:posts).group('post_tags.tag_id').order('COUNT(*) DESC')
+    @tags = sorted_tags
     @posts = Tag.where(name: params[:tag])[0].posts.order('updated_at DESC')
     @posts.each(&:tags)
   end
@@ -102,5 +102,9 @@ class PostsController < ApplicationController
 
   def tag_params
     params.require(:tag).permit(:name)
+  end
+
+  def sorted_tags
+    Tag.joins(:posts).group('tags.id').order('COUNT(*) DESC')
   end
 end

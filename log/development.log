@@ -25386,3 +25386,5 @@ ActionView::Template::Error (SQLite3::SQLException: no such column: tags.tag_id:
   Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
   Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
   Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (14.4ms)
+  [1m[36mTag Load (1.7ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+SQLite3::SQLException: no such table: tags: SELECT "tags".* FROM "tags"
