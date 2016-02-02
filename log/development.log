@@ -25261,3 +25261,104 @@ Processing by PostsController#index as HTML
   [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 21]]
   Rendered posts/index.html.erb within layouts/application (6.0ms)
 Completed 200 OK in 72ms (Views: 69.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-02-02 20:32:51 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"   ORDER BY updated_at DESC
+  [1m[36mTag Load (9.6ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY post_tags.tag_id  ORDER BY COUNT(*) DESC[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?  [["post_id", 24]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 21]]
+  Rendered posts/index.html.erb within layouts/application (90.1ms)
+Completed 200 OK in 546ms (Views: 392.3ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2016-02-02 20:32:52 +0100
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-02-02 20:32:52 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-02-02 20:32:53 +0100
+
+
+Started GET "/posts/filter/neviem" for 127.0.0.1 at 2016-02-02 20:33:00 +0100
+Processing by PostsController#filter as HTML
+  Parameters: {"tag"=>"neviem"}
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"  WHERE "tags"."name" = 'neviem'
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" INNER JOIN "post_tags" ON "posts"."id" = "post_tags"."post_id" WHERE "post_tags"."tag_id" = ?  ORDER BY updated_at DESC[0m  [["tag_id", 2]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY post_tags.tag_id  ORDER BY COUNT(*) DESC
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 21]]
+  Rendered posts/_index.html.erb (3.9ms)
+  Rendered posts/filter.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 148ms (Views: 68.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/filter/uz" for 127.0.0.1 at 2016-02-02 20:33:02 +0100
+Processing by PostsController#filter as HTML
+  Parameters: {"tag"=>"uz"}
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"  WHERE "tags"."name" = 'uz'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" INNER JOIN "post_tags" ON "posts"."id" = "post_tags"."post_id" WHERE "post_tags"."tag_id" = ?  ORDER BY updated_at DESC[0m  [["tag_id", 29]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY post_tags.tag_id  ORDER BY COUNT(*) DESC
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 21]]
+  Rendered posts/_index.html.erb (2.3ms)
+  Rendered posts/filter.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 86ms (Views: 82.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/filter/uzaj" for 127.0.0.1 at 2016-02-02 20:33:03 +0100
+Processing by PostsController#filter as HTML
+  Parameters: {"tag"=>"uzaj"}
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"  WHERE "tags"."name" = 'uzaj'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" INNER JOIN "post_tags" ON "posts"."id" = "post_tags"."post_id" WHERE "post_tags"."tag_id" = ?  ORDER BY updated_at DESC[0m  [["tag_id", 33]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY post_tags.tag_id  ORDER BY COUNT(*) DESC
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 21]]
+  Rendered posts/_index.html.erb (2.8ms)
+  Rendered posts/filter.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 92ms (Views: 88.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/filter/as" for 127.0.0.1 at 2016-02-02 20:33:04 +0100
+Processing by PostsController#filter as HTML
+  Parameters: {"tag"=>"as"}
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"  WHERE "tags"."name" = 'as'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" INNER JOIN "post_tags" ON "posts"."id" = "post_tags"."post_id" WHERE "post_tags"."tag_id" = ?  ORDER BY updated_at DESC[0m  [["tag_id", 34]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY post_tags.tag_id  ORDER BY COUNT(*) DESC
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 24]]
+  Rendered posts/_index.html.erb (2.8ms)
+  Rendered posts/filter.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 97ms (Views: 91.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/filter/s" for 127.0.0.1 at 2016-02-02 20:33:05 +0100
+Processing by PostsController#filter as HTML
+  Parameters: {"tag"=>"s"}
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"  WHERE "tags"."name" = 's'
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" INNER JOIN "post_tags" ON "posts"."id" = "post_tags"."post_id" WHERE "post_tags"."tag_id" = ?  ORDER BY updated_at DESC[0m  [["tag_id", 36]]
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY post_tags.tag_id  ORDER BY COUNT(*) DESC
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "tags"."id" = "post_tags"."tag_id" WHERE "post_tags"."post_id" = ?[0m  [["post_id", 24]]
+  Rendered posts/_index.html.erb (2.9ms)
+  Rendered posts/filter.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 93ms (Views: 89.9ms | ActiveRecord: 0.6ms)
