@@ -25362,3 +25362,27 @@ Processing by PostsController#filter as HTML
   Rendered posts/_index.html.erb (2.9ms)
   Rendered posts/filter.html.erb within layouts/application (3.7ms)
 Completed 200 OK in 93ms (Views: 89.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-02-02 22:04:48 +0100
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"   ORDER BY updated_at DESC
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY tags.tag_id  ORDER BY COUNT(*) DESC[0m
+SQLite3::SQLException: no such column: tags.tag_id: SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY tags.tag_id  ORDER BY COUNT(*) DESC
+  Rendered posts/index.html.erb within layouts/application (74.6ms)
+Completed 500 Internal Server Error in 99ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: tags.tag_id: SELECT "tags".* FROM "tags" INNER JOIN "post_tags" ON "post_tags"."tag_id" = "tags"."id" INNER JOIN "posts" ON "posts"."id" = "post_tags"."post_id" GROUP BY tags.tag_id  ORDER BY COUNT(*) DESC):
+    10: 
+    11:   <tbody>
+    12:     <tr>
+    13:       <% @tags.each do |tag| %>
+    14:         <td><a class="filter-by-tag" href="/posts/filter/<%=tag.name%>"><%= tag.name %></a></td>
+    15:       <% end %>
+    16:     </tr>
+  app/views/posts/index.html.erb:13:in `_app_views_posts_index_html_erb__3514359403518782870_28938880'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (14.4ms)
