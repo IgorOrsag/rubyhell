@@ -31,11 +31,8 @@ class PostsController < ApplicationController
   # GET /posts/filter/tag
   def filter
     @tags = sorted_tags
-    p params[:tag]
     decoded_tag = URI.decode(params[:tag])
-    p decoded_tag
     @posts = Tag.where(name: decoded_tag)[0].posts.order('updated_at DESC')
-    p @posts
     @posts.each(&:tags)
   end
 
@@ -105,17 +102,7 @@ class PostsController < ApplicationController
   end
 
   def tag_params
-    p 'tag_params *****************'
-    encoded_param = params.require(:tag).permit(:name)
-    p encoded_param
-
-    encoded_string = URI.encode(encoded_param[:name])
-    encoded_hash = {name: encoded_string}
-    encoded_hash
-    #encoded_hash
-    #p URI.encode(decoded_string)
-    #p URI.decode(decoded_string)
-    #params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name)
   end
 
   def sorted_tags

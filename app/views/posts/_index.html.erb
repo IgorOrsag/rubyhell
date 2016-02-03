@@ -11,7 +11,7 @@
   <tbody>
     <tr>
       <% @tags.each do |tag| %>
-        <td><a class="filter-by-tag" href="/posts/filter/<%=tag.name%>"><%= tag.name %></a></td>
+        <td><a class="filter-by-tag" href="/posts/filter/<%=CGI.escape tag.name%>"><%= tag.name %></a></td>
       <% end %>
     </tr>
     

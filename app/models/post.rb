@@ -8,7 +8,6 @@ class Post < ActiveRecord::Base
   validates :body, presence: true
 
   def add_tags(tag_names)
-    tag_names.empty? && false
     tags.clear
     tag_names = tag_names.split(/[","]|[" "]/)
     tag_names.each do |tag_name|
@@ -16,7 +15,6 @@ class Post < ActiveRecord::Base
       !tag.save && tag = Tag.where(name: tag_name)
       tags << tag
     end
-    true
   end
 
   def tag_names
