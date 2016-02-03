@@ -25,7 +25,6 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
     @tag = Tag.new(name: @post.tag_names)
   end
 
@@ -63,7 +62,6 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    @post = Post.find(params[:id])
     @tag = Tag.new(tag_params)
     respond_to do |format|
       if !@tag[:name].empty? && @post.update_attributes(post_params)
@@ -113,11 +111,11 @@ class PostsController < ApplicationController
 
     encoded_string = URI.encode(encoded_param[:name])
     encoded_hash = {name: encoded_string}
-    p encoded_hash
+    encoded_hash
     #encoded_hash
     #p URI.encode(decoded_string)
     #p URI.decode(decoded_string)
-    params.require(:tag).permit(:name)
+    #params.require(:tag).permit(:name)
   end
 
   def sorted_tags
